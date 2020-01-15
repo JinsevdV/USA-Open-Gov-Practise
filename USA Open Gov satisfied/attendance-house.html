@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--CSS link-->
+  <link rel="stylesheet" href="./resources/style.css" type="text/css">
+  <!--VUE-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>House-Attendance</title>
+</head>
+
+<body>
+  <!--navigation-->
+  <nav class="navbar navbar-expand-md navbar-fixed-top navbar-light">
+    <div class="container">
+      <ul class="navbar-nav custom-center">
+        <li class="nav-item">
+          <a class="nav-link" href="./home.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Congress 116</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./congress116-senate.html">Senate</a>
+            <a class="dropdown-item" href="./congress116-house.html">House</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./attendance-senate.html">Senate</a>
+            <a class="dropdown-item active" href="./attendance-house.html">House <span
+                class="sr-only">(current)</span></a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./partyloyalty-senate.html">Senate</a>
+            <a class="dropdown-item" href="./partyloyalty-house.html">House</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--information regarding house attendance-->
+  <div id="app-2">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Congress - Attendance</h2>
+          <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house.
+            Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most
+            cases,
+            debates continue even if a majority is not present.<br><br>
+            The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye"
+            or "no"
+            when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a
+            roll-call of
+            all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a
+            tie,
+            the motion in question fails.In the Senate, the Vice President may (if present) cast the tiebreaking vote.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--table of congress Attendance-->
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <table class="table table-hover" id="glanceTable">
+            <thead>
+              <h2>Congress at a glance</h2>
+              <tr>
+                <th>Party</th>
+                <th>Number of Representatives</th>
+                <th>Party Votes</th>
+              </tr>
+            </thead>
+            <tbody id="information">
+              <tr>
+                <td class="bg-danger">Republican</td>
+                <td class="bg-danger">{{ repCount }}</td>
+                <td class="bg-danger">{{ repVotesPct }}%</td>
+              </tr>
+              <tr>
+                <td class="bg-primary">Democrat</td>
+                <td class="bg-primary">{{ demCount }}</td>
+                <td class="bg-primary">{{ demVotesPct }}%</td>
+              </tr>
+              <tr>
+                <td class="bg-light">Independent</td>
+                <td class="bg-light">{{ indCount }}</td>
+                <td class="bg-light">{{ indVotesPct }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--least engaged-->
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <table class="table table hover table-striped" id="leastTable">
+            <h2>Least Engaged</h2>
+            <thead>
+              <tr>
+                <th @click="sortBottom('last_name')">Congressmen</th>
+                <th @click="sortBottom('missed_votes')">Missed Votes</th>
+                <th @click="sortBottom('missed_votes_pct')">Missed Votes Percentage</th>
+              </tr>
+            </thead>
+            <tbody id="leastTableBody">
+              <tr v-for="item in bottomTenSorted('missed_votes_pct')">
+                <td><a v-bind:href="item.url">{{ item.last_name}}, {{item.first_name }}</a></td>
+                <td>{{ item.missed_votes }}</td>
+                <td>{{ item.missed_votes_pct }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--most engaged-->
+        <div class="col-6">
+          <table class="table table hover table-striped" id="mostTable">
+            <h2>Most Engaged</h2>
+            <thead>
+              <tr>
+                <th @click="sortTop('last_name')">Congressmen</th>
+                <th @click="sortTop('missed_votes')">Missed Votes</th>
+                <th @click="sortTop('missed_votes_pct')">Missed Votes Percentage</th>
+              </tr>
+            </thead>
+            <tbody id="mostTableBody">
+              <tr v-for="item in topTenSorted('missed_votes_pct')">
+                <td><a v-bind:href="item.url">{{ item.last_name}}, {{item.first_name }}</a></td>
+                <td>{{ item.missed_votes }}</td>
+                <td>{{ item.missed_votes_pct }}%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--jQuery first, then Popper.js, then Bootstrap JS-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!--API table script-->
+  <script src="./js/house.js"></script>
+</body>
+<footer></footer>
+
+</html>

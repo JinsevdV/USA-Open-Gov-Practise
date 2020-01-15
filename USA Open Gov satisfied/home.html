@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!--bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!--CSS link-->
+  <link rel="stylesheet" href="./resources/style.css" type="text/css">
+  <!--VUE-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>USA Open Gov</title>
+</head>
+
+<body>
+  <!--navigation-->
+  <nav class="navbar navbar-expand-md navbar-light">
+    <div class="container">
+      <ul class="navbar-nav custom-center">
+        <li class="nav-item active">
+          <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Congress 116</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./congress116-senate.html">Senate</a>
+            <a class="dropdown-item" href="./congress116-house.html">House</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./attendance-senate.html">Senate</a>
+            <a class="dropdown-item" href="./attendance-house.html">House</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./partyloyalty-senate.html">Senate</a>
+            <a class="dropdown-item" href="./partyloyalty-house.html">House</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!--start of information section-->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>About Us</h3>
+        <p>Openness, accountability, and honesty define government transparency. In a free society, transparency is
+          government's obligation to share information with citizens. It is at the heart ofhow citizens hold their
+          public officials accountable. Here at USA Open Gov we believe that government should be transparent. <br><br>
+          Governments exist to serve the people. Information on how officials conduct the public business and spend
+          taxpayer money must be readily available and easily understood. This transparency allows good and just
+          governance. Transparency promotes accountability and provides information for citizens about what their
+          Government is doing. <br><br>
+          We also believe that government should be participatory. Public engagement enhances the Government's
+          effectiveness and improves the quality of its decisions. Knowledge is widely dispersed in society, and public
+          officials benefit from having access to that dispersed knowledge. We invite you to use our site to become
+          actively engaged in American government.<br><br>
+          USA Open Gov works to disclose information in forms that the public can readily find and use. We solicit
+          public feedback to identify information of greatest use to the public.
+        </p>
+        <!--hidden till 'read more' is clicked-->
+        <div id="readMore" class="collapse">
+          <h4>Background History of Government Transparency</h4>
+          <p>In the West, the idea that government should be open to public scrutiny and susceptible to public opinion
+            dates back at least to the time of the Enlightenment, when many philosophes made an attack on absolutist
+            doctrine of state secrecy, a core part of their intellectual project. The passage of formal legislative
+            instruments to this end can also be traced to this time with Sweden, for example, (which then included
+            Finland as a Swedish-governed territory) enacting free press legislation as part of its constitution
+            (Freedom of the Press Act, 1766). This approach, and that of the philosophes more broadly, is strongly
+            related to recent historiography on the eighteenth-century public sphere. <br><br>
+            Influenced by Enlightenment thought, the revolutions in America (1776) and France (1789), freedom of the
+            press enshrined provisions and requirements for public budgetary accounting and freedom of the press in
+            constitutional articles. In the nineteenth century, attempts by Metternichean statesmen to row back on these
+            measures were vigorously opposed by a number of eminent liberal politicians and writers, Bentham, Mill and
+            Acton prominent amongthe latter. <br><br>
+            Open government is widely seen to be a key hallmark of contemporary democratic practice and is often linked
+            to the passing of freedom of information legislation. Scandinavian countries claim to have adopted the first
+            freedom of information legislation, dating the originsof its modern provisions to the eighteenth century and
+            Finland continuing the presumption of openness after gaining independence in 1917, passing its Act on
+            Publicity of Official Documents in 1951 (superseded by new legislation in 1999).
+            The United States passed its Freedom of Information Act (FOIA) in 1966, FOIAs, Access to Information Acts
+            (AIAs) or equivalent laws were passed in Denmark and Norway in 1970.
+          </p>
+          <div id="pictureBox">
+            <img id="happy" src="./resources/happytrump.jpg" />
+          </div>
+        </div>
+        <!--read more collapsable button-->
+        <div class="text-center" id="readMoreButton">
+          <button class="btn-default" data-toggle="collapse" data-target="#readMore">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--jQuery first, then Popper.js, then Bootstrap JS-->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!--rename "Read More" into "Read Less"-->
+  <script src="./js/readbutton.js"></script>
+</body>
+<footer></footer>
+
+</html>
